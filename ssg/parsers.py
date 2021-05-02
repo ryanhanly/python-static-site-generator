@@ -6,7 +6,7 @@ from pathlib import Path
 class Parser:
     extensions: List[str] = []
 
-    def valid_extension(self, extensions):
+    def valid_extension(self, extension):
         return extension in self.extensions
 
     def parse(self, path: Path, source: Path, dest: Path):
@@ -21,7 +21,7 @@ class Parser:
         with open(full_path, "w") as file:
             file.write(content)
 
-    def copy(sel, path, source, dest):
+    def copy(self, path, source, dest):
         shutil.copy2(path, dest / path.relative_to(source))
 
 class ResourceParser(Parser):
